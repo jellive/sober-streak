@@ -1,0 +1,38 @@
+{
+  "name": "sober-streak",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@serwist/next": "^9.5.11",
+    "next": "15.5.20",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "serwist": "^9.5.11"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.61.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.0.3",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.20",
+    "jsdom": "^29.1.1",
+    "typescript": "^5",
+    "vitest": "^4.1.10"
+  }
+}
