@@ -1,42 +1,19 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-0: #0a1c2a; --bg-1: #071722; --bg-2: #05121b;
+  --ink: #d7e8f1; --muted: #5f8ea0; --muted-2: #6b98ab;
+  --glow: #4fd1e0; --line: rgba(120,180,200,.16);
+  --tap: 44px;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(120% 80% at 50% 22%, rgba(79,209,224,.14), transparent 55%),
+              linear-gradient(var(--bg-0), var(--bg-1) 42%, var(--bg-2));
+  background-attachment: fixed;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
+.tabnum { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
