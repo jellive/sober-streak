@@ -5,7 +5,7 @@ export function emptyStore(base: string): DrinkStore {
 }
 
 export function loadStore(): DrinkStore | null {
-  const raw = localStorage.getItem(STORAGE_KEY);
+  const raw = typeof localStorage === 'undefined' ? null : localStorage.getItem(STORAGE_KEY);
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw) as DrinkStore;

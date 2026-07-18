@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { emptyStore, loadStore, saveStore, upsertDay, exportJSON, importJSON, mergeStores } from './store';
 import { STORAGE_KEY } from './types';
 
@@ -21,6 +21,11 @@ describe('save/load', () => {
     expect(loadStore()).toBeNull();
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ meta: { trackingStartDate: '2026-07-10', schemaVersion: 1 } })); // days 없음
     expect(loadStore()).toBeNull();
+  });
+  it('localStorage가 없으면(SSR 등) null 반환 — never throws', () => {
+    vi.stubGlobal('localStorage', undefined);
+    expect(loadStore()).toBeNull();
+    vi.unstubAllGlobals();
   });
 });
 
@@ -48,6 +53,9 @@ describe('export/import 왕복', () => {
   });
   it('깨진 import는 throw', () => {
     expect(() => importJSON(emptyStore('2026-07-10'), 'nope')).toThrow();
+  });
+  it('parsed 자체가 null이면(JSON "null") throw', () => {
+    expect(() => importJSON(emptyStore('2026-07-10'), 'null')).toThrow();
   });
   it('유효 JSON이지만 스키마 검증 실패하면 throw', () => {
     expect(() => importJSON(emptyStore('2026-07-10'), JSON.stringify({ days: {} }))).toThrow();
