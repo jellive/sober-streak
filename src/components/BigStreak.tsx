@@ -1,5 +1,17 @@
 'use client';
 export function BigStreak({ current }: { current: number }) {
+  if (current === 0) {
+    // 마신 당일(또는 오늘을 마지막 음주일로 시작) — 0을 강조하지 않고 '다시 시작' 톤 (spec §7/§8.1 무경고)
+    return (
+      <div style={{ textAlign: 'center' }}>
+        <div style={{ color: 'var(--muted)', letterSpacing: '.12em', textTransform: 'uppercase', fontSize: 13 }}>오늘부터</div>
+        <div style={{ fontWeight: 300, fontSize: 'clamp(40px,13vw,72px)', lineHeight: 1, color: 'var(--ink-bright)', textShadow: '0 0 30px rgba(101,214,232,.35)', marginTop: 6 }}>
+          다시 시작 💧
+        </div>
+        <div style={{ fontSize: 15, color: 'var(--muted-2)', marginTop: 10 }}>여기서 새로 쌓아가면 돼</div>
+      </div>
+    );
+  }
   return (
     <div style={{ textAlign: 'center' }}>
       <div style={{ color: 'var(--muted)', letterSpacing: '.12em', textTransform: 'uppercase', fontSize: 13 }}>현재 스트릭</div>
