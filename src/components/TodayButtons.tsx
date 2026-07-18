@@ -47,7 +47,7 @@ export function TodayButtons({ today, current, setDay }: {
                 style={chip(current?.context === c)}>{c}</button>
             ))}
           </div>
-          <button onClick={() => setSheet(false)} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', color: 'var(--glow)', fontSize: 14 }}>완료</button>
+          <button onClick={() => setSheet(false)} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', color: 'var(--glow)', fontSize: 14, minHeight: 'var(--tap)' }}>완료</button>
         </div>
       )}
     </div>

@@ -45,7 +45,7 @@ pnpm test:watch   # watch 모드
 pnpm test:e2e     # E2E (playwright — 내부적으로 build+start 후 실행)
 ```
 
-`src/lib/**` (지표 계산, 날짜 유틸, 스토어 직렬화)는 **100% 커버리지**가 CI 게이트로
+`src/lib/**` (지표 계산, 날짜 유틸, 스토어 직렬화)는 **100% 커버리지**가 커버리지 게이트로
 강제된다 (`vitest.config.ts`의 `coverage.thresholds`).
 
 ## 빌드
