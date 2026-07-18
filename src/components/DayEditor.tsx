@@ -10,7 +10,7 @@ export function DayEditor({ date, current, setDay, onClose }: {
       <div onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: 480, margin: '0 auto', background: 'var(--bg-0)', borderRadius: '18px 18px 0 0', padding: 22, display: 'flex', flexDirection: 'column', gap: 14 }}>
         <strong className="tabnum">{date}</strong>
         <div style={{ display: 'flex', gap: 12 }}>
-          <button onClick={() => save({ drank: false })} aria-pressed={!day.drank} style={editBtn(!day.drank)}>안 마심</button>
+          <button onClick={() => save({ drank: false, type: undefined, amount: undefined, context: undefined })} aria-pressed={!day.drank} style={editBtn(!day.drank)}>안 마심</button>
           <button onClick={() => save({ drank: true })} aria-pressed={day.drank} style={editBtn(day.drank)}>마심</button>
         </div>
         <button role="switch" aria-checked={day.nonAlcohol} onClick={() => save({ nonAlcohol: !day.nonAlcohol })} style={editBtn(day.nonAlcohol)}>🍺🚫 논알콜 마심</button>
