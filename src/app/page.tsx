@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <section style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 24, gap: 22 }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10 }}>
-        <BigStreak current={metrics!.current} />
+        <BigStreak current={metrics!.current} cumulative={metrics!.cumulative} />
         <SafetyNet peak={metrics!.peak} cumulative={metrics!.cumulative} />
       </div>
       <TodayButtons today={today} current={current} setDay={setDay} />
