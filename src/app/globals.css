@@ -3,6 +3,8 @@
   --ink: #d7e8f1; --muted: #5f8ea0; --muted-2: #6b98ab;
   --glow: #4fd1e0; --line: rgba(120,180,200,.16);
   --tap: 44px;
+  --on-glow: #06202b;
+  --surface: rgba(255, 255, 255, .05);
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; }

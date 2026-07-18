@@ -13,10 +13,10 @@ export function Onboarding({ today, initialize }: { today: string; initialize: (
       <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: 'var(--muted-2)' }}>
         마지막으로 마신 날
         <input type="date" max={today} value={date} onChange={(e) => setDate(e.target.value)}
-          style={{ padding: 14, fontSize: 16, borderRadius: 12, border: '1px solid var(--line)', background: 'rgba(255,255,255,.05)', color: 'var(--ink)' }} />
+          style={{ padding: 14, fontSize: 16, borderRadius: 12, border: '1px solid var(--line)', background: 'var(--surface)', color: 'var(--ink)' }} />
       </label>
       <button onClick={() => initialize(date)}
-        style={{ padding: 16, fontSize: 16, fontWeight: 700, borderRadius: 14, border: 'none', background: 'var(--glow)', color: '#06202b', minHeight: 'var(--tap)' }}>
+        style={{ padding: 16, fontSize: 16, fontWeight: 700, borderRadius: 14, border: 'none', background: 'var(--glow)', color: 'var(--on-glow)', minHeight: 'var(--tap)' }}>
         시작하기
       </button>
       <p style={{ color: 'var(--muted)', fontSize: 13, lineHeight: 1.6, margin: 0 }}>
