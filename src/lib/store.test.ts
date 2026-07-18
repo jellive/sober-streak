@@ -12,6 +12,16 @@ describe('save/load', () => {
   });
   it('없으면 null', () => { expect(loadStore()).toBeNull(); });
   it('깨진 JSON이면 null', () => { localStorage.setItem(STORAGE_KEY, '{oops'); expect(loadStore()).toBeNull(); });
+  it('유효 JSON이지만 형태가 틀리면 null', () => {
+    localStorage.setItem(STORAGE_KEY, 'null');
+    expect(loadStore()).toBeNull();                                    // !parsed
+    localStorage.setItem(STORAGE_KEY, '123');
+    expect(loadStore()).toBeNull();                                    // typeof !== 'object'
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ days: {} }));   // meta 없음
+    expect(loadStore()).toBeNull();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ meta: { trackingStartDate: '2026-07-10', schemaVersion: 1 } })); // days 없음
+    expect(loadStore()).toBeNull();
+  });
 });
 
 describe('upsertDay', () => {
@@ -39,12 +49,18 @@ describe('export/import 왕복', () => {
   it('깨진 import는 throw', () => {
     expect(() => importJSON(emptyStore('2026-07-10'), 'nope')).toThrow();
   });
+  it('유효 JSON이지만 스키마 검증 실패하면 throw', () => {
+    expect(() => importJSON(emptyStore('2026-07-10'), JSON.stringify({ days: {} }))).toThrow();
+    expect(() => importJSON(emptyStore('2026-07-10'), JSON.stringify({ meta: {} }))).toThrow();
+  });
 });
 
 describe('mergeStores', () => {
   it('더 이른 base 채택', () => {
     const a = emptyStore('2026-07-10'); const b = emptyStore('2026-07-05');
     expect(mergeStores(a, b).meta.trackingStartDate).toBe('2026-07-05');
+    const c = emptyStore('2026-07-05'); const d = emptyStore('2026-07-10');
+    expect(mergeStores(c, d).meta.trackingStartDate).toBe('2026-07-05');
   });
   it('겹치는 날은 b(import) 우선', () => {
     let a = emptyStore('2026-07-10'); let b = emptyStore('2026-07-10');
