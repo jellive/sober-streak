@@ -8,10 +8,12 @@ import { currentStreak, peakStreak, cumulativeSoberDays } from '@/lib/metrics';
 export function useDrinkStore() {
   const [store, setStore] = useState<DrinkStore | null>(null);
   const [today, setToday] = useState(() => todayKST());
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     setStore(loadStore());
     setToday(todayKST());
+    setReady(true);
   }, []);
 
   const persist = useCallback((next: DrinkStore) => {
@@ -45,5 +47,5 @@ export function useDrinkStore() {
     };
   }, [store, today]);
 
-  return { store, today, metrics, initialize, setDay, getDay, replaceStore: persist };
+  return { store, today, metrics, initialize, setDay, getDay, replaceStore: persist, ready };
 }

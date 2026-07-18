@@ -5,6 +5,7 @@
   --tap: 44px;
   --on-glow: #06202b;
   --surface: rgba(255, 255, 255, .05);
+  --ink-bright: #eafaff;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; }

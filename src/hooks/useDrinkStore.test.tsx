@@ -9,6 +9,7 @@ describe('useDrinkStore', () => {
     const { result } = renderHook(() => useDrinkStore());
     expect(result.current.store).toBeNull();
     expect(result.current.metrics).toBeNull();
+    expect(result.current.ready).toBe(true);
   });
 
   it('initialize 후 지표 계산 + 영속', () => {
